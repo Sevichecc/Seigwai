@@ -9,6 +9,7 @@ import { tooltipFactory } from '@milkdown/plugin-tooltip'
 import { usePluginViewFactory } from '@prosemirror-adapter/vue'
 import { gfm } from '@milkdown/preset-gfm'
 import { clipboard } from '@milkdown/plugin-clipboard'
+import { emoji } from '@milkdown/plugin-emoji'
 import Tooltip from './Tooltip.vue'
 import Slash from './Slash.vue'
 
@@ -47,6 +48,7 @@ useEditor((root) => {
     .use(math)
     .use(gfm)
     .use(clipboard)
+    .use(emoji)
 })
 </script>
 
