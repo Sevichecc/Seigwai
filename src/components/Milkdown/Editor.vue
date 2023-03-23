@@ -1,0 +1,40 @@
+<script setup lang="ts">
+import { Editor, defaultValueCtx, rootCtx } from '@milkdown/core'
+import { commonmark } from '@milkdown/preset-commonmark'
+import { nord } from '@milkdown/theme-nord'
+// import { history } from '@milkdown/plugin-history'
+// import { math } from '@milkdown/plugin-math'
+import { Milkdown, useEditor } from '@milkdown/vue'
+import { tooltipFactory } from '@milkdown/plugin-tooltip'
+import { usePluginViewFactory } from '@prosemirror-adapter/vue'
+import Tooltip from './Tooltip.vue'
+const tooltip = tooltipFactory('Text')
+
+const markdown = `# Milkdown Vue Commonmark
+
+> You're scared of a world where you're needed.
+
+This is a demo for using Milkdown with **Vue**.`
+
+const pluginViewFactory = usePluginViewFactory()
+
+useEditor((root) => {
+  return Editor.make()
+    .config(nord)
+    .config((ctx) => {
+      ctx.set(rootCtx, root)
+      ctx.set(defaultValueCtx, markdown)
+      ctx.set(tooltip.key, {
+        view: pluginViewFactory({
+          component: Tooltip,
+        }),
+      })
+    })
+    .use(commonmark)
+    .use(tooltip)
+})
+</script>
+
+<template>
+  <Milkdown />
+</template>
