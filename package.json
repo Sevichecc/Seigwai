@@ -19,6 +19,7 @@
     "@milkdown/plugin-slash": "^7.1.0",
     "@milkdown/plugin-tooltip": "^7.1.0",
     "@milkdown/preset-commonmark": "^7.1.0",
+    "@milkdown/preset-gfm": "^7.1.0",
     "@milkdown/prose": "^7.1.0",
     "@milkdown/theme-nord": "^7.1.0",
     "@milkdown/transformer": "^7.1.0",

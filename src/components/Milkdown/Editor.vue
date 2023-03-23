@@ -2,13 +2,17 @@
 import { Editor, defaultValueCtx, rootCtx } from '@milkdown/core'
 import { commonmark } from '@milkdown/preset-commonmark'
 import { nord } from '@milkdown/theme-nord'
-// import { history } from '@milkdown/plugin-history'
-// import { math } from '@milkdown/plugin-math'
+import { history } from '@milkdown/plugin-history'
+import { math } from '@milkdown/plugin-math'
 import { Milkdown, useEditor } from '@milkdown/vue'
 import { tooltipFactory } from '@milkdown/plugin-tooltip'
 import { usePluginViewFactory } from '@prosemirror-adapter/vue'
+import { gfm } from '@milkdown/preset-gfm'
 import Tooltip from './Tooltip.vue'
+import Slash from './Slash.vue'
+
 const tooltip = tooltipFactory('Text')
+const slash = tooltipFactory('Text')
 
 const markdown = `# Milkdown Vue Commonmark
 
@@ -29,9 +33,18 @@ useEditor((root) => {
           component: Tooltip,
         }),
       })
+      ctx.set(slash.key, {
+        view: pluginViewFactory({
+          component: Slash,
+        }),
+      })
     })
     .use(commonmark)
     .use(tooltip)
+    .use(slash)
+    .use(history)
+    .use(math)
+    .use(gfm)
 })
 </script>
 
