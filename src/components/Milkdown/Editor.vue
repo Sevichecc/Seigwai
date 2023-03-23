@@ -8,6 +8,7 @@ import { Milkdown, useEditor } from '@milkdown/vue'
 import { tooltipFactory } from '@milkdown/plugin-tooltip'
 import { usePluginViewFactory } from '@prosemirror-adapter/vue'
 import { gfm } from '@milkdown/preset-gfm'
+import { clipboard } from '@milkdown/plugin-clipboard'
 import Tooltip from './Tooltip.vue'
 import Slash from './Slash.vue'
 
@@ -45,6 +46,7 @@ useEditor((root) => {
     .use(history)
     .use(math)
     .use(gfm)
+    .use(clipboard)
 })
 </script>
 
