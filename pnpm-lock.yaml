@@ -9,6 +9,7 @@ specifiers:
   '@milkdown/plugin-cursor': ^7.1.0
   '@milkdown/plugin-emoji': ^7.1.0
   '@milkdown/plugin-history': ^7.1.0
+  '@milkdown/plugin-indent': ^7.1.0
   '@milkdown/plugin-math': ^7.1.0
   '@milkdown/plugin-slash': ^7.1.0
   '@milkdown/plugin-tooltip': ^7.1.0
@@ -38,6 +39,7 @@ dependencies:
   '@milkdown/plugin-cursor': 7.1.0_732s7te4rg2orop6g3xf7k4a4q
   '@milkdown/plugin-emoji': 7.1.0_732s7te4rg2orop6g3xf7k4a4q
   '@milkdown/plugin-history': 7.1.0_732s7te4rg2orop6g3xf7k4a4q
+  '@milkdown/plugin-indent': 7.1.0_732s7te4rg2orop6g3xf7k4a4q
   '@milkdown/plugin-math': 7.1.0_732s7te4rg2orop6g3xf7k4a4q
   '@milkdown/plugin-slash': 7.1.0_732s7te4rg2orop6g3xf7k4a4q
   '@milkdown/plugin-tooltip': 7.1.0_732s7te4rg2orop6g3xf7k4a4q
@@ -564,6 +566,22 @@ packages:
 
   /@milkdown/plugin-history/7.1.0_732s7te4rg2orop6g3xf7k4a4q:
     resolution: {integrity: sha512-IMMRk7lG2yfLzf/9Ni1m+GLJyo1L4lZRbOgzvjhasY0zZQf+AI/jBHnLIqWH6jtOo5c5oZt/DF5EqObucuXmdA==}
+    peerDependencies:
+      '@milkdown/core': ^7.0.0-next.0
+      '@milkdown/ctx': ^7.0.0-next.0
+      '@milkdown/prose': ^7.0.0-next.0
+    dependencies:
+      '@milkdown/core': 7.1.0_c3r5dnopq2fkbj274fowd6pqe4
+      '@milkdown/ctx': 7.1.0
+      '@milkdown/prose': 7.1.0
+      '@milkdown/utils': 7.1.0_732s7te4rg2orop6g3xf7k4a4q
+      tslib: 2.5.0
+    transitivePeerDependencies:
+      - '@milkdown/transformer'
+    dev: false
+
+  /@milkdown/plugin-indent/7.1.0_732s7te4rg2orop6g3xf7k4a4q:
+    resolution: {integrity: sha512-MewdgU7U+fahrWQalhCRacJ1cDJHLLFzIAwccums1utiOmlwcpFs8r2dVAdjt9+4sTVTGou3mVAv2rW9cTuOMA==}
     peerDependencies:
       '@milkdown/core': ^7.0.0-next.0
       '@milkdown/ctx': ^7.0.0-next.0

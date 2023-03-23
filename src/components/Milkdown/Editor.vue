@@ -10,15 +10,17 @@ import { usePluginViewFactory } from '@prosemirror-adapter/vue'
 import { gfm } from '@milkdown/preset-gfm'
 import { clipboard } from '@milkdown/plugin-clipboard'
 import { emoji } from '@milkdown/plugin-emoji'
+import { block } from '@milkdown/plugin-block'
+import { cursor } from '@milkdown/plugin-cursor'
 
 import Tooltip from './Tooltip.vue'
 import Slash from './Slash.vue'
+import Block from './Block.vue'
 
 const tooltip = tooltipFactory('Text')
 const slash = tooltipFactory('Text')
 
 const markdown = `# Milkdown Vue Commonmark
-
 > You're scared of a world where you're needed.
 
 This is a demo for using Milkdown with **Vue**.`
@@ -41,6 +43,11 @@ useEditor((root) => {
           component: Slash,
         }),
       })
+      ctx.set(block.key, {
+        view: pluginViewFactory({
+          component: Block,
+        }),
+      })
     })
     .use(commonmark)
     .use(tooltip)
@@ -50,6 +57,8 @@ useEditor((root) => {
     .use(gfm)
     .use(clipboard)
     .use(emoji)
+    .use(block)
+    .use(cursor)
 })
 </script>
 
