@@ -2,12 +2,14 @@
 import { useInstance } from '@milkdown/vue'
 import {
   createCodeBlockCommand,
+  toggleEmphasisCommand,
+  toggleInlineCodeCommand,
   toggleStrongCommand,
 } from '@milkdown/preset-commonmark'
 import { callCommand } from '@milkdown/utils'
 import { editorViewCtx } from '@milkdown/core'
 
-export const useToggleBold = () => {
+export const useCommands = () => {
   const [loading, get] = useInstance()
 
   const toggleBold = (e: Event) => {
@@ -16,11 +18,17 @@ export const useToggleBold = () => {
     get()!.action(callCommand(toggleStrongCommand.key))
   }
 
-  return { toggleBold }
-}
+  const toggleInlineCode = (e: Event) => {
+    if (loading.value) return
+    e.preventDefault()
+    get()!.action(callCommand(toggleInlineCodeCommand.key))
+  }
 
-export const useAddCodeBlock = () => {
-  const [loading, get] = useInstance()
+  const toggleItalic = (e: Event) => {
+    if (loading.value) return
+    e.preventDefault()
+    get()!.action(callCommand(toggleEmphasisCommand.key))
+  }
 
   const addCodeBlock = (e: Event) => {
     if (loading.value) return
@@ -34,5 +42,6 @@ export const useAddCodeBlock = () => {
       return callCommand(createCodeBlockCommand.key)(ctx)
     })
   }
-  return { addCodeBlock }
+
+  return { toggleBold, addCodeBlock, toggleInlineCode, toggleItalic }
 }
