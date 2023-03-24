@@ -5,7 +5,7 @@ import { usePluginViewContext } from '@prosemirror-adapter/vue'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 
 import type { VNodeRef } from 'vue'
-import { useAddCodeBlock, useToggleBold } from '../../composables/quickCommands'
+import { useAddCodeBlock, useToggleBold } from '../../composables/commands'
 const { view, prevState } = usePluginViewContext()
 
 const divRef = ref<VNodeRef>()
@@ -41,8 +41,8 @@ const { addCodeBlock } = useAddCodeBlock()
       Bold
     </button>
     <button
-      className="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
-      @mousedown="addCodeBlock"
+      class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
+      @click="addCodeBlock"
     >
       Code Block
     </button>
