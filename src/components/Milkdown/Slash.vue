@@ -1,19 +1,14 @@
 <script setup lang="ts">
-import { editorViewCtx } from '@milkdown/core'
 import { SlashProvider } from '@milkdown/plugin-slash'
-import { createCodeBlockCommand } from '@milkdown/preset-commonmark'
-import { callCommand } from '@milkdown/utils'
-import { useInstance } from '@milkdown/vue'
-import { usePluginViewContext } from '@prosemirror-adapter/vue'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
-
+import { usePluginViewContext } from '@prosemirror-adapter/vue'
 import type { VNodeRef } from 'vue'
-const { view, prevState } = usePluginViewContext()
-const [loading, get] = useInstance()
-
-const divRef = ref<VNodeRef>()
+import { addCodeBlock } from '../../utils/utils'
 
 let tooltipProvider: SlashProvider
+
+const { view, prevState } = usePluginViewContext()
+const divRef = ref<VNodeRef>()
 
 onMounted(() => {
   tooltipProvider = new SlashProvider({
@@ -30,21 +25,6 @@ watch([view, prevState], () => {
 onUnmounted(() => {
   tooltipProvider.destroy()
 })
-
-const addCodeBlock = (e: Event) => {
-  if (loading.value) return
-
-  e.preventDefault()
-
-  get()!.action((ctx) => {
-    const view = ctx.get(editorViewCtx)
-    const { dispatch, state } = view
-    const { tr, selection } = state
-    const { from } = selection
-    dispatch(tr.deleteRange(from - 1, from))
-    return callCommand(createCodeBlockCommand.key)(ctx)
-  })
-}
 </script>
 
 <template>

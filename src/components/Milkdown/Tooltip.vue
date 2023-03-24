@@ -1,19 +1,14 @@
 <script setup lang="ts">
 import { TooltipProvider } from '@milkdown/plugin-tooltip'
-import { toggleStrongCommand } from '@milkdown/preset-commonmark'
-import { callCommand } from '@milkdown/utils'
-import { useInstance } from '@milkdown/vue'
-import { usePluginViewContext } from '@prosemirror-adapter/vue'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
-
+import { usePluginViewContext } from '@prosemirror-adapter/vue'
 import type { VNodeRef } from 'vue'
-
-const { view, prevState } = usePluginViewContext()
-const [loading, get] = useInstance()
-
-const divRef = ref<VNodeRef>()
+import { toggleBold } from '../../utils/utils'
 
 let tooltipProvider: TooltipProvider
+
+const { view, prevState } = usePluginViewContext()
+const divRef = ref<VNodeRef>()
 
 onMounted(() => {
   tooltipProvider = new TooltipProvider({
@@ -30,12 +25,6 @@ watch([view, prevState], () => {
 onUnmounted(() => {
   tooltipProvider.destroy()
 })
-
-const toggleBold = (e: Event) => {
-  if (loading.value) return
-  e.preventDefault()
-  get()!.action(callCommand(toggleStrongCommand.key))
-}
 </script>
 
 <template>
