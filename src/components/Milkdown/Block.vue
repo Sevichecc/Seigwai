@@ -14,6 +14,7 @@ let tooltipProvider: BlockProvider | undefined
 
 watch([loading], () => {
   const editor = get()
+  // eslint-disable-next-line antfu/if-newline
   if (loading.value || !editor || tooltipProvider) return
 
   editor.action((ctx) => {

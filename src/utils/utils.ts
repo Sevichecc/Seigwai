@@ -7,9 +7,8 @@ import {
   toggleStrongCommand,
 } from '@milkdown/preset-commonmark'
 
-const [loading, get] = useInstance()
-
 export const addCodeBlock = (e: Event) => {
+  const [loading, get] = useInstance()
   if (loading.value) return
   e.preventDefault()
 
@@ -24,7 +23,9 @@ export const addCodeBlock = (e: Event) => {
 }
 
 export const toggleBold = (e: Event) => {
+  const [loading, get] = useInstance()
   if (loading.value) return
   e.preventDefault()
+
   get()!.action(callCommand(toggleStrongCommand.key))
 }
