@@ -3,7 +3,7 @@ import { SlashProvider } from '@milkdown/plugin-slash'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { usePluginViewContext } from '@prosemirror-adapter/vue'
 import type { VNodeRef } from 'vue'
-import { addCodeBlock } from '../../utils/utils'
+import { useAddCodeBlock, useToggleBold } from '../../composables/quickCommands'
 
 let tooltipProvider: SlashProvider
 
@@ -25,6 +25,9 @@ watch([view, prevState], () => {
 onUnmounted(() => {
   tooltipProvider.destroy()
 })
+
+const { addCodeBlock } = useAddCodeBlock()
+const { toggleBold } = useToggleBold()
 </script>
 
 <template>
@@ -34,6 +37,12 @@ onUnmounted(() => {
       @mousedown="addCodeBlock"
     >
       Code Block
+    </button>
+    <button
+      class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
+      @click="toggleBold"
+    >
+      Bold
     </button>
   </div>
 </template>
