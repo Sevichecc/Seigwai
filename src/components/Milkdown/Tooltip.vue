@@ -1,19 +1,26 @@
 <script setup lang="ts">
+import { useInstance } from '@milkdown/vue'
 import { TooltipProvider } from '@milkdown/plugin-tooltip'
-
 import { usePluginViewContext } from '@prosemirror-adapter/vue'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
-
+import type { CmdKey } from '@milkdown/core'
 import type { VNodeRef } from 'vue'
-import { useCommands } from '../../composables/commands'
+import { callCommand } from '@milkdown/utils'
 
-const {
-  toggleBold,
-  toggleInlineCode,
-  toggleItalic,
-  wrapInBlockQuote,
-  toggleStrikeThrough,
-} = useCommands()
+import {
+  toggleEmphasisCommand,
+  toggleInlineCodeCommand,
+  toggleStrongCommand,
+  wrapInBlockquoteCommand,
+} from '@milkdown/preset-commonmark'
+import { toggleStrikethroughCommand } from '@milkdown/preset-gfm'
+
+const [loading, get] = useInstance()
+
+const call = <T>(command: CmdKey<T>, payload?: T) => {
+  return get()?.action(callCommand(command, payload))
+}
+
 const { view, prevState } = usePluginViewContext()
 
 const divRef = ref<VNodeRef>()
@@ -38,34 +45,34 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="divRef">
+  <div v-if="loading" ref="divRef">
     <button
       class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
-      @click="toggleBold"
+      @click.prevent="call(toggleStrongCommand.key)"
     >
       Bold
     </button>
     <button
       class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
-      @click="toggleInlineCode"
+      @click.prevent="call(toggleInlineCodeCommand.key)"
     >
       Code
     </button>
     <button
       class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
-      @click="toggleItalic"
+      @click.prevent="call(toggleEmphasisCommand.key)"
     >
       Italic
     </button>
     <button
       class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
-      @click="wrapInBlockQuote"
+      @click.prevent="call(wrapInBlockquoteCommand.key)"
     >
       Quote
     </button>
     <button
       class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
-      @click="toggleStrikeThrough"
+      @click.prevent="call(toggleStrikethroughCommand.key)"
     >
       StrikeThrough
     </button>
