@@ -5,7 +5,9 @@ import {
   toggleEmphasisCommand,
   toggleInlineCodeCommand,
   toggleStrongCommand,
+  wrapInBlockquoteCommand,
 } from '@milkdown/preset-commonmark'
+import { toggleStrikethroughCommand } from '@milkdown/preset-gfm'
 import { callCommand } from '@milkdown/utils'
 import { editorViewCtx } from '@milkdown/core'
 
@@ -29,7 +31,17 @@ export const useCommands = () => {
     e.preventDefault()
     get()!.action(callCommand(toggleEmphasisCommand.key))
   }
+  const toggleStrikeThrough = (e: Event) => {
+    if (loading.value) return
+    e.preventDefault()
+    get()!.action(callCommand(toggleStrikethroughCommand.key))
+  }
 
+  const wrapInBlockQuote = (e: Event) => {
+    if (loading.value) return
+    e.preventDefault()
+    get()!.action(callCommand(wrapInBlockquoteCommand.key))
+  }
   const addCodeBlock = (e: Event) => {
     if (loading.value) return
     e.preventDefault()
@@ -43,5 +55,12 @@ export const useCommands = () => {
     })
   }
 
-  return { toggleBold, addCodeBlock, toggleInlineCode, toggleItalic }
+  return {
+    toggleBold,
+    toggleInlineCode,
+    toggleItalic,
+    toggleStrikeThrough,
+    wrapInBlockQuote,
+    addCodeBlock,
+  }
 }

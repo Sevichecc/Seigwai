@@ -7,7 +7,13 @@ import { onMounted, onUnmounted, ref, watch } from 'vue'
 import type { VNodeRef } from 'vue'
 import { useCommands } from '../../composables/commands'
 
-const { toggleBold, toggleInlineCode, toggleItalic } = useCommands()
+const {
+  toggleBold,
+  toggleInlineCode,
+  toggleItalic,
+  wrapInBlockQuote,
+  toggleStrikeThrough,
+} = useCommands()
 const { view, prevState } = usePluginViewContext()
 
 const divRef = ref<VNodeRef>()
@@ -50,6 +56,18 @@ onUnmounted(() => {
       @click="toggleItalic"
     >
       Italic
+    </button>
+    <button
+      class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
+      @click="wrapInBlockQuote"
+    >
+      Quote
+    </button>
+    <button
+      class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
+      @click="toggleStrikeThrough"
+    >
+      StrikeThrough
     </button>
   </div>
 </template>
