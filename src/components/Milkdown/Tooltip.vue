@@ -6,14 +6,15 @@ import { onMounted, onUnmounted, ref, watch } from 'vue'
 import type { CmdKey } from '@milkdown/core'
 import type { VNodeRef } from 'vue'
 import { callCommand } from '@milkdown/utils'
-
 import {
   toggleEmphasisCommand,
   toggleInlineCodeCommand,
   toggleStrongCommand,
   wrapInBlockquoteCommand,
 } from '@milkdown/preset-commonmark'
+
 import { toggleStrikethroughCommand } from '@milkdown/preset-gfm'
+import LinkWidge from './LinkWidge.vue'
 
 const [loading, get] = useInstance()
 
@@ -46,35 +47,41 @@ onUnmounted(() => {
 
 <template>
   <div v-if="loading" ref="divRef">
-    <button
-      class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
-      @click.prevent="call(toggleStrongCommand.key)"
-    >
-      Bold
-    </button>
-    <button
-      class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
-      @click.prevent="call(toggleInlineCodeCommand.key)"
-    >
-      Code
-    </button>
-    <button
-      class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
-      @click.prevent="call(toggleEmphasisCommand.key)"
-    >
-      Italic
-    </button>
-    <button
-      class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
-      @click.prevent="call(wrapInBlockquoteCommand.key)"
-    >
-      Quote
-    </button>
-    <button
-      class="text-gray-600 bg-slate-200 px-2 py-1 rounded-lg hover:bg-slate-300 border hover:text-gray-900"
-      @click.prevent="call(toggleStrikethroughCommand.key)"
-    >
-      StrikeThrough
-    </button>
+    <div class="flex text-gray-700 bg-slate-50 border rounded-md grass">
+      <button
+        class="btn btn-sm btn-ghost"
+        @click.prevent="call(toggleStrongCommand.key)"
+      >
+        B
+      </button>
+      <button
+        class="btn btn-sm btn-ghost i-mingcute-code-line"
+        @click.prevent="call(toggleInlineCodeCommand.key)"
+      ></button>
+      <button
+        class="btn btn-sm btn-ghost"
+        @click.prevent="call(toggleEmphasisCommand.key)"
+      >
+        Italic
+      </button>
+      <button
+        class="btn btn-sm btn-ghost"
+        @click.prevent="call(wrapInBlockquoteCommand.key)"
+      >
+        Quote
+      </button>
+      <button
+        class="btn btn-sm btn-ghost"
+        @click.prevent="call(toggleStrikethroughCommand.key)"
+      >
+        StrikeThrough
+      </button>
+      <button
+        class="btn btn-sm btn-ghost"
+        @click.prevent="call(toggleStrikethroughCommand.key)"
+      >
+        Link
+      </button>
+    </div>
   </div>
 </template>

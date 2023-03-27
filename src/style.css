@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .milkdown {
-  @apply bg-slate-50 px-2 py-4 m-5 border rounded;
+  @apply bg-slate-50 px-2 py-4  border rounded-xl max-w-4xl mx-auto shadow-lg mt-10;
 }
 
 .editor {
