@@ -1,12 +1,14 @@
 {
   "name": "seigwai",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@egoist/tailwindcss-icons": "^1.0.7",
@@ -24,6 +26,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.37.0",
+    "@iconify-json/tabler": "^1.1.68",
     "@tailwindcss/typography": "^0.5.9",
     "@vitejs/plugin-vue": "^4.1.0",
     "autoprefixer": "^10.4.14",

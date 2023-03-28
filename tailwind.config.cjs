@@ -10,7 +10,7 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('daisyui'),
     iconsPlugin({
-      collections: getIconCollections(['mdi', 'lucide']),
+      collections: getIconCollections(['tabler']),
     }),
   ],
 }
