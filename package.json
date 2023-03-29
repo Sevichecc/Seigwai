@@ -8,7 +8,6 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -28,6 +27,8 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.37.0",
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
     "@iconify-json/tabler": "^1.1.68",
     "@tailwindcss/typography": "^0.5.9",
     "@vitejs/plugin-vue": "^4.1.0",
@@ -35,10 +36,14 @@
     "daisyui": "^2.51.5",
     "eslint": "^8.36.0",
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7",
     "typescript": "^5.0.2",
     "vite": "^4.2.1",
     "vue-tsc": "^1.2.0"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
