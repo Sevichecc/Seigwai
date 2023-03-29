@@ -112,7 +112,7 @@ const setLink = () => {
       <input
         ref="inputUrl"
         v-model.trim="url"
-        class="input input-sm focus:outline-none"
+        class="input input-sm focus:outline-none min-w-[16rem]"
         placeholder="Add Link to text"
         @blur="setLink"
       >

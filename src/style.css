@@ -30,10 +30,7 @@
   @apply bg-slate-200;
 }
 
-.input-group{
-  @apply h-4;
-}
 
-  a {
-    color: #68CEF8;
-  }
+a {
+  color: #68CEF8;
+}
