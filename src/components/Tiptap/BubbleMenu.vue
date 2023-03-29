@@ -10,33 +10,33 @@ const showUrlInput = ref(false)
 const inputUrl = ref<HTMLInputElement | null>(null)
 
 const openLinkInput = () => {
+  url.value = editor.getAttributes('link').href || ''
   showUrlInput.value = true
-  nextTick(() =>
-    inputUrl.value?.focus(),
-  )
+  nextTick(() => inputUrl.value?.focus())
 }
 
 const setLink = () => {
-  const previousUrl = editor.getAttributes('link').href
-
-  if (previousUrl)
-    inputUrl.value = previousUrl
-
-  // cancelled
-  if (url.value === null)
-    return
-
-  if (url.value === '') {
-    editor.chain().focus().extendMarkRange('link').unsetAllMarks().run()
+  if (url.value === null) {
+    showUrlInput.value = false
     return
   }
 
+  // empty
+  if (url.value === '') {
+    editor.chain().focus().extendMarkRange('link').unsetLink().run()
+    showUrlInput.value = false
+    return
+  }
+
+  // unpdate link
   editor
     .chain()
     .focus()
     .extendMarkRange('link')
     .setLink({ href: url.value })
     .run()
+
+  showUrlInput.value = false
 }
 </script>
 
@@ -90,7 +90,9 @@ const setLink = () => {
       >
         <span
           :class="[
-            editor.isActive('blockquote') ? 'i-tabler-quote-off' : 'i-tabler-quote',
+            editor.isActive('blockquote')
+              ? 'i-tabler-quote-off'
+              : 'i-tabler-quote',
           ]"
         />
       </button>
@@ -106,18 +108,15 @@ const setLink = () => {
         />
       </button>
     </div>
-    <div
-      v-show="showUrlInput"
-      class="input-group input-group-sm border-slate-300 border-1"
-    >
+    <div v-show="showUrlInput" class="input-group input-group-sm">
       <input
         ref="inputUrl"
         v-model.trim="url"
         class="input input-sm focus:outline-none"
         placeholder="Add Link to text"
-        @blur="showUrlInput = false"
+        @blur="setLink"
       >
-      <button class="btn btn-sm btn-square" @click="setLink">
+      <button class="btn btn-sm btn-square">
         <span class="i-tabler-link p-2" />
       </button>
     </div>
