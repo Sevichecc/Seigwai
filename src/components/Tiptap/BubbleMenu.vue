@@ -1,59 +1,110 @@
 <script setup lang="ts">
-import type { Editor
-} from '@tiptap/vue-3';
- 
+import type { Editor } from '@tiptap/vue-3'
 import { BubbleMenu } from '@tiptap/vue-3'
+import { nextTick, ref } from 'vue'
 
 const { editor } = defineProps<{ editor: Editor }>()
 
+const url = ref('')
+const showUrlInput = ref(false)
+const placeholder = ref('Add Link to text')
+const inputUrl = ref<HTMLInputElement | null>(null)
+
+const openLinkInput = () => {
+  showUrlInput.value = true
+  nextTick(() => inputUrl.value?.focus())
+}
+
+const setLink = () => {
+  const previousUrl = editor.getAttributes('link').href
+
+  if (previousUrl)
+    placeholder.value = previousUrl
+
+  // cancelled
+  if (url.value === null)
+    return
+
+  if (url.value === '') {
+    editor.chain().focus().extendMarkRange('link').unsetAllMarks().run()
+    return
+  }
+
+  editor
+    .chain()
+    .focus()
+    .extendMarkRange('link')
+    .setLink({ href: url.value })
+    .run()
+
+  return (showUrlInput.value = false)
+}
 </script>
 
 <template>
   <BubbleMenu
     :editor="editor"
-    :tippy-options="{ duration: 100 }"
+    :tippy-options="{ duration: 50 }"
     class="flex text-gray-700 bg-white grass rounded-md p-[2px] shadow-xl border-slate-100 border"
   >
-    <button
-      class="menu-btn"
-      placement="bold"
-      @click="editor.chain().focus().toggleBold().run()"
+    <div v-show="!showUrlInput">
+      <button
+        class="menu-btn"
+        :class="{ 'btn-active': editor.isActive('bold') }"
+        @click="editor.chain().focus().toggleBold().run()"
+      >
+        <span class="i-tabler-bold" />
+      </button>
+      <button
+        class="menu-btn"
+        :class="{ 'btn-active': editor.isActive('italic') }"
+        @click="editor.chain().focus().toggleItalic().run()"
+      >
+        <span class="i-tabler-italic" />
+      </button>
+      <button
+        class="menu-btn"
+        :class="{ 'btn-active': editor.isActive('strike') }"
+        @click="editor.chain().focus().toggleStrike().run()"
+      >
+        <span class="i-tabler-strikethrough" />
+      </button>
+      <button
+        class="menu-btn"
+        :class="{ 'btn-active': editor.isActive('code') }"
+        @click="editor.chain().focus().toggleCode().run()"
+      >
+        <span class="i-tabler-code" />
+      </button>
+      <button
+        class="menu-btn"
+        :class="{ 'btn-active': editor.isActive('quote') }"
+        @click="editor.chain().focus().toggleBlockquote().run()"
+      >
+        <span class="i-tabler-quote" />
+      </button>
+      <button
+        :class="{ 'btn-active': editor.isActive('link') }"
+        class="menu-btn"
+        @click="openLinkInput"
+      >
+        <span class="i-tabler-link" />
+      </button>
+    </div>
+    <div
+      v-show="showUrlInput"
+      class="input-group input-group-sm border-slate-300 border-1"
     >
-      <span class="i-tabler-bold" />
-    </button>
-    <button
-      class="menu-btn"
-      @click="editor.chain().focus().toggleItalic().run()"
-    >
-      <span class="i-tabler-italic" />
-    </button>
-    <button
-      class="menu-btn"
-      @click="editor.chain().focus().toggleStrike().run()"
-    >
-      <span class="i-tabler-strikethrough" />
-    </button>
-    <button
-      class="menu-btn"
-      @click="editor.chain().focus().toggleCode().run()"
-    >
-      <span class="i-tabler-code" />
-    </button>
-    <button
-      class="menu-btn"
-      @click="editor.chain().focus().toggleBlockquote().run()"
-    >
-      <span class="i-tabler-quote" />
-    </button>
+      <input
+        ref="inputUrl"
+        v-model.trim="url"
+        class="input input-sm focus:outline-none"
+        :placeholder="placeholder"
+        @blur="showUrlInput = false"
+      >
+      <button class="btn btn-sm btn-square" @click="setLink">
+        <span class="i-tabler-link p-2" />
+      </button>
+    </div>
   </BubbleMenu>
 </template>
-
-<style lang="pcss">
-.menu-btn {
-    @apply btn btn-ghost btn-sm hover:bg-slate-200 rounded-md p-2;
-}
-
-.menu-btn > span {
-  @apply w-4;
-}
-</style>

@@ -9,3 +9,27 @@
 .editor {
   @apply mx-auto;
 }
+
+.btn-ghost {
+  @apply hover:bg-slate-200;
+}
+
+.btn-active{
+  @apply bg-slate-200;
+}
+
+.menu-btn {
+   @apply btn btn-ghost btn-sm rounded-md p-2;
+}
+
+.menu-btn > span {
+  @apply w-4;
+}
+
+.menu-btn.btn-active {
+  @apply bg-slate-200;
+}
+
+.input-group{
+  @apply h-4;
+}
