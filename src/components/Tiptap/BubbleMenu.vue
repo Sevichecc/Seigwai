@@ -12,14 +12,16 @@ const inputUrl = ref<HTMLInputElement | null>(null)
 
 const openLinkInput = () => {
   showUrlInput.value = true
-  nextTick(() => inputUrl.value?.focus())
+  nextTick(() =>
+    inputUrl.value?.focus(),
+  )
 }
 
 const setLink = () => {
   const previousUrl = editor.getAttributes('link').href
 
   if (previousUrl)
-    placeholder.value = previousUrl
+    inputUrl.value = previousUrl
 
   // cancelled
   if (url.value === null)
@@ -36,8 +38,6 @@ const setLink = () => {
     .extendMarkRange('link')
     .setLink({ href: url.value })
     .run()
-
-  return (showUrlInput.value = false)
 }
 </script>
 
@@ -53,7 +53,11 @@ const setLink = () => {
         :class="{ 'btn-active': editor.isActive('bold') }"
         @click="editor.chain().focus().toggleBold().run()"
       >
-        <span class="i-tabler-bold" />
+        <span
+          :class="[
+            editor.isActive('bold') ? 'i-tabler-bold-off' : 'i-tabler-bold',
+          ]"
+        />
       </button>
       <button
         class="menu-btn"
@@ -74,21 +78,33 @@ const setLink = () => {
         :class="{ 'btn-active': editor.isActive('code') }"
         @click="editor.chain().focus().toggleCode().run()"
       >
-        <span class="i-tabler-code" />
+        <span
+          :class="[
+            editor.isActive('code') ? 'i-tabler-code-off' : 'i-tabler-code',
+          ]"
+        />
       </button>
       <button
         class="menu-btn"
-        :class="{ 'btn-active': editor.isActive('quote') }"
+        :class="{ 'btn-active': editor.isActive('blockquote') }"
         @click="editor.chain().focus().toggleBlockquote().run()"
       >
-        <span class="i-tabler-quote" />
+        <span
+          :class="[
+            editor.isActive('blockquote') ? 'i-tabler-quote-off' : 'i-tabler-quote',
+          ]"
+        />
       </button>
       <button
         :class="{ 'btn-active': editor.isActive('link') }"
         class="menu-btn"
         @click="openLinkInput"
       >
-        <span class="i-tabler-link" />
+        <span
+          :class="[
+            editor.isActive('link') ? 'i-tabler-unlink' : 'i-tabler-link',
+          ]"
+        />
       </button>
     </div>
     <div

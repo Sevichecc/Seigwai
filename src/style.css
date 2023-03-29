@@ -33,3 +33,7 @@
 .input-group{
   @apply h-4;
 }
+
+  a {
+    color: #68CEF8;
+  }
