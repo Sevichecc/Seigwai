@@ -4,6 +4,8 @@ import StarterKit from '@tiptap/starter-kit'
 import Typography from '@tiptap/extension-typography'
 import Link from '@tiptap/extension-link'
 import BubbleMenu from './BubbleMenu.vue'
+import Commands from './commands'
+import suggestion from './suggestion'
 
 const editor = useEditor({
   content: `<p>
@@ -17,6 +19,9 @@ const editor = useEditor({
     Typography,
     Link.configure({
       openOnClick: false,
+    }),
+    Commands.configure({
+      suggestion,
     }),
   ],
   editable: true,
