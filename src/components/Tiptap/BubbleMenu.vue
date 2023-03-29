@@ -7,7 +7,6 @@ const { editor } = defineProps<{ editor: Editor }>()
 
 const url = ref('')
 const showUrlInput = ref(false)
-const placeholder = ref('Add Link to text')
 const inputUrl = ref<HTMLInputElement | null>(null)
 
 const openLinkInput = () => {
@@ -115,7 +114,7 @@ const setLink = () => {
         ref="inputUrl"
         v-model.trim="url"
         class="input input-sm focus:outline-none"
-        :placeholder="placeholder"
+        placeholder="Add Link to text"
         @blur="showUrlInput = false"
       >
       <button class="btn btn-sm btn-square" @click="setLink">
