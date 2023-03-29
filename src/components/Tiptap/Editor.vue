@@ -21,6 +21,11 @@ const editor = useEditor({
   ],
   editable: true,
   autofocus: true,
+  editorProps: {
+    attributes: {
+      class: 'prose',
+    },
+  },
 })
 </script>
 
