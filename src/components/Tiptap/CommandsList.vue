@@ -1,4 +1,6 @@
 <script>
+// ⚠️ Experiment
+// Ref: https://tiptap.dev/experiments/commands
 export default {
   props: {
     items: {

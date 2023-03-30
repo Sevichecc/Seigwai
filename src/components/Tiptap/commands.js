@@ -1,3 +1,5 @@
+// ⚠️ Experiment
+// Ref: https://tiptap.dev/experiments/commands
 import { Extension } from '@tiptap/core'
 import Suggestion from '@tiptap/suggestion'
 

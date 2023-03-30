@@ -17,7 +17,7 @@
     "@tiptap/core": "2.0.0-beta.220",
     "@tiptap/extension-bubble-menu": "2.0.0-beta.220",
     "@tiptap/extension-character-count": "2.0.0-beta.220",
-    "@tiptap/extension-code-block": "^2.0.0",
+    "@tiptap/extension-code-block-lowlight": "^2.0.1",
     "@tiptap/extension-highlight": "^2.0.0",
     "@tiptap/extension-link": "2.0.0-beta.220",
     "@tiptap/extension-typography": "2.0.0-beta.220",
@@ -26,6 +26,7 @@
     "@tiptap/suggestion": "^2.0.0",
     "@tiptap/vue-3": "2.0.0-beta.220",
     "install": "^0.13.0",
+    "lowlight": "^2.8.1",
     "masto": "^5.10.0",
     "tippy.js": "^6.3.7",
     "vue": "^3.2.47"

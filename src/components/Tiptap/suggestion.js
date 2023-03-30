@@ -1,3 +1,5 @@
+// ⚠️ Experiment
+// Ref: https://tiptap.dev/experiments/commands
 import { VueRenderer } from '@tiptap/vue-3'
 import tippy from 'tippy.js'
 
@@ -29,28 +31,33 @@ export default {
         },
       },
       {
-        title: 'code block',
+        title: 'H3',
         command: ({ editor, range }) => {
           editor
             .chain()
             .focus()
             .deleteRange(range)
-            .setNode('pre')
+            .setNode('heading', { level: 3 })
             .run()
         },
       },
       {
-        title: 'italic',
+        title: 'Code block',
         command: ({ editor, range }) => {
-          editor
-            .chain()
-            .focus()
-            .deleteRange(range)
-            .setMark('italic')
-            .run()
+          editor.chain().focus().deleteRange(range).setCodeBlock().run()
         },
       },
-    ].filter(item => item.title.toLowerCase().startsWith(query.toLowerCase())).slice(0, 10)
+      {
+        title: 'Bullet List',
+        command: ({ editor, range }) => {
+          editor.chain().focus().deleteRange(range).setMark('italic').run()
+        },
+      },
+    ]
+      .filter(item =>
+        item.title.toLowerCase().startsWith(query.toLowerCase()),
+      )
+      .slice(0, 10)
   },
 
   render: () => {
