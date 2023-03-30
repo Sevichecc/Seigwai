@@ -1,6 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-const { iconsPlugin, getIconCollections } = require('@egoist/tailwindcss-icons')
-module.exports = {
+import type { Config } from 'tailwindcss'
+import { getIconCollections, iconsPlugin } from '@egoist/tailwindcss-icons'
+
+export default {
   content: ['**/*.tsx', '**/*.ts', '**/*.vue', '**/*.html'],
   darkMode: 'class',
   theme: {
@@ -13,4 +14,4 @@ module.exports = {
       collections: getIconCollections(['tabler']),
     }),
   ],
-}
+} satisfies Config
