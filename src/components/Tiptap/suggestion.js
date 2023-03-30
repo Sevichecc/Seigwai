@@ -48,9 +48,27 @@ export default {
         },
       },
       {
+        title: 'Blockquote',
+        command: ({ editor, range }) => {
+          editor.chain().focus().deleteRange(range).toggleBlockquote().run()
+        },
+      },
+      {
+        title: 'Divider',
+        command: ({ editor, range }) => {
+          editor.chain().focus().deleteRange(range).setHorizontalRule().run()
+        },
+      },
+      {
         title: 'Bullet List',
         command: ({ editor, range }) => {
-          editor.chain().focus().deleteRange(range).setMark('italic').run()
+          editor.chain().focus().deleteRange(range).toggleBulletList().run()
+        },
+      },
+      {
+        title: 'Ordered List',
+        command: ({ editor, range }) => {
+          editor.chain().focus().deleteRange(range).toggleOrderedList().run()
         },
       },
     ]

@@ -6,6 +6,7 @@ import Link from '@tiptap/extension-link'
 import Highlight from '@tiptap/extension-highlight'
 import { lowlight } from 'lowlight/lib/core'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+
 import html from 'highlight.js/lib/languages/xml'
 import css from 'highlight.js/lib/languages/css'
 import js from 'highlight.js/lib/languages/javascript'
@@ -77,7 +78,7 @@ const editor = useEditor({
   autofocus: true,
   editorProps: {
     attributes: {
-      class: 'prose prose-slate mx-auto heti',
+      class: 'prose prose-slate mx-auto',
     },
   },
 })
