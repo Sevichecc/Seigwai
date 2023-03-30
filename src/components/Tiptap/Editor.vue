@@ -69,7 +69,7 @@ const editor = useEditor({
     CodeBlockLowlight.configure({
       lowlight,
       HTMLAttributes: {
-        class: 'not-prose hljs',
+        class: 'hljs not-prose',
       },
     }),
   ],
@@ -77,7 +77,7 @@ const editor = useEditor({
   autofocus: true,
   editorProps: {
     attributes: {
-      class: 'prose prose-slate mx-auto',
+      class: 'prose prose-slate mx-auto heti',
     },
   },
 })
