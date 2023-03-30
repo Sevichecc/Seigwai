@@ -29,13 +29,13 @@ export default {
         },
       },
       {
-        title: 'bold',
+        title: 'code block',
         command: ({ editor, range }) => {
           editor
             .chain()
             .focus()
             .deleteRange(range)
-            .setMark('bold')
+            .setNode('pre')
             .run()
         },
       },

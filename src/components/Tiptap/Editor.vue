@@ -3,9 +3,10 @@ import { EditorContent, useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import Typography from '@tiptap/extension-typography'
 import Link from '@tiptap/extension-link'
+import Highlight from '@tiptap/extension-highlight'
+import suggestion from './suggestion'
 import BubbleMenu from './BubbleMenu.vue'
 import Commands from './commands'
-import suggestion from './suggestion'
 
 const editor = useEditor({
   content: `<p>
@@ -22,6 +23,11 @@ const editor = useEditor({
     }),
     Commands.configure({
       suggestion,
+    }),
+    Highlight.configure({
+      HTMLAttributes: {
+        class: 'bg-blue-100',
+      },
     }),
   ],
   editable: true,

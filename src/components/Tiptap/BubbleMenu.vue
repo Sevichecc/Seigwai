@@ -12,10 +12,15 @@ const inputUrl = ref<HTMLInputElement | null>(null)
 const openLinkInput = () => {
   url.value = editor.getAttributes('link').href || ''
   showUrlInput.value = true
+
+  editor.chain().toggleHighlight().run()
+
   nextTick(() => inputUrl.value?.focus())
 }
 
 const setLink = () => {
+  editor.chain().focus().unsetHighlight().run()
+
   if (url.value === null) {
     showUrlInput.value = false
     return

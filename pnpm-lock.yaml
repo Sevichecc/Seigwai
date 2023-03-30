@@ -19,6 +19,12 @@ dependencies:
   '@tiptap/extension-character-count':
     specifier: 2.0.0-beta.220
     version: 2.0.0-beta.220(@tiptap/core@2.0.0-beta.220)(@tiptap/pm@2.0.0-beta.220)
+  '@tiptap/extension-code-block':
+    specifier: ^2.0.0
+    version: 2.0.0(@tiptap/core@2.0.0-beta.220)(@tiptap/pm@2.0.0-beta.220)
+  '@tiptap/extension-highlight':
+    specifier: ^2.0.0
+    version: 2.0.0(@tiptap/core@2.0.0-beta.220)
   '@tiptap/extension-link':
     specifier: 2.0.0-beta.220
     version: 2.0.0-beta.220(@tiptap/core@2.0.0-beta.220)(@tiptap/pm@2.0.0-beta.220)
@@ -700,11 +706,11 @@ packages:
       '@tiptap/pm': 2.0.0-beta.220(@tiptap/core@2.0.0-beta.220)
     dev: false
 
-  /@tiptap/extension-code-block@2.0.0-beta.220(@tiptap/core@2.0.0-beta.220)(@tiptap/pm@2.0.0-beta.220):
-    resolution: {integrity: sha512-fgA7yTfHqhBtMJF7I9FPJ6UWuZPtxOQiN45Iv9LNmFIB6YRucdpmF+daZ27sElu0a+eICZyXwVn4w4iJphifuw==}
+  /@tiptap/extension-code-block@2.0.0(@tiptap/core@2.0.0-beta.220)(@tiptap/pm@2.0.0-beta.220):
+    resolution: {integrity: sha512-rkI2W8037A9BWtsYNhuzA4/IjJF1jafmGGXKh56xLW7hkW563u33jizvQ+f+g+5dofKWUd+0coMv0bDax7ANCg==}
     peerDependencies:
-      '@tiptap/core': ^2.0.0-beta.209
-      '@tiptap/pm': ^2.0.0-beta.209
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
     dependencies:
       '@tiptap/core': 2.0.0-beta.220(@tiptap/pm@2.0.0-beta.220)
       '@tiptap/pm': 2.0.0-beta.220(@tiptap/core@2.0.0-beta.220)
@@ -769,6 +775,14 @@ packages:
     resolution: {integrity: sha512-7mrHRj++UaZ26C2Gjwb0WKWAzpiKb8TOYkVC2uMaCwaNhLDXpFEwZ7RtJRSTNBHkIGnMO46BH8Z0qlkFMmk9Jw==}
     peerDependencies:
       '@tiptap/core': ^2.0.0-beta.209
+    dependencies:
+      '@tiptap/core': 2.0.0-beta.220(@tiptap/pm@2.0.0-beta.220)
+    dev: false
+
+  /@tiptap/extension-highlight@2.0.0(@tiptap/core@2.0.0-beta.220):
+    resolution: {integrity: sha512-2EbfBMmWRQj06LaG2cwncmKNQJzxrquSubVVK7wmrVOTm7oCbgCiofYZ3Fv0vE9qNowKUnPsd1oza7m5x2FAeA==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
     dependencies:
       '@tiptap/core': 2.0.0-beta.220(@tiptap/pm@2.0.0-beta.220)
     dev: false
@@ -894,7 +908,7 @@ packages:
       '@tiptap/extension-bold': 2.0.0-beta.220(@tiptap/core@2.0.0-beta.220)
       '@tiptap/extension-bullet-list': 2.0.0-beta.220(@tiptap/core@2.0.0-beta.220)
       '@tiptap/extension-code': 2.0.0-beta.220(@tiptap/core@2.0.0-beta.220)
-      '@tiptap/extension-code-block': 2.0.0-beta.220(@tiptap/core@2.0.0-beta.220)(@tiptap/pm@2.0.0-beta.220)
+      '@tiptap/extension-code-block': 2.0.0(@tiptap/core@2.0.0-beta.220)(@tiptap/pm@2.0.0-beta.220)
       '@tiptap/extension-document': 2.0.0-beta.220(@tiptap/core@2.0.0-beta.220)
       '@tiptap/extension-dropcursor': 2.0.0-beta.220(@tiptap/core@2.0.0-beta.220)(@tiptap/pm@2.0.0-beta.220)
       '@tiptap/extension-gapcursor': 2.0.0-beta.220(@tiptap/core@2.0.0-beta.220)(@tiptap/pm@2.0.0-beta.220)
