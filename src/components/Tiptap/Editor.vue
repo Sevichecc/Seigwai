@@ -6,6 +6,7 @@ import Link from '@tiptap/extension-link'
 import Highlight from '@tiptap/extension-highlight'
 import { lowlight } from 'lowlight/lib/core'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+import Placeholder from '@tiptap/extension-placeholder'
 
 import html from 'highlight.js/lib/languages/xml'
 import css from 'highlight.js/lib/languages/css'
@@ -73,6 +74,23 @@ const editor = useEditor({
         class: 'hljs not-prose',
       },
     }),
+    Placeholder.configure({
+      // Use different placeholders depending on the node type:
+      // placeholder: 'Write something …'
+      placeholder: ({ node }) => {
+        if (node.type.name === 'heading') {
+          switch (node.attrs.level) {
+            case 1:
+              return 'Heading 1'
+            case 2:
+              return 'Heading 2'
+            case 3:
+              return 'Heading 3'
+          }
+        }
+        return 'Can you add some further context?'
+      },
+    }),
   ],
   editable: true,
   autofocus: true,
@@ -88,3 +106,30 @@ const editor = useEditor({
   <BubbleMenu v-if="editor" :editor="editor" />
   <EditorContent :editor="editor" />
 </template>
+
+<style lang="scss">
+/* Basic editor styles */
+.ProseMirror {
+  > * + * {
+    margin-top: 0.75em;
+  }
+}
+
+/* Placeholder (at the top) */
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  height: 0;
+}
+
+/* Placeholder (on every new line) */
+.ProseMirror :where(p.is-empty,h1.is-empty,h2.is-empty,h3.is-empty)::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  height: 0;
+}
+</style>
