@@ -2,6 +2,9 @@
 
 A Pleroma/Mastodon client, focus on editing experience (WIP 🏗️), developed by [@seviche@kongwoo.icu](https://kongwoo.icu/seviche)
 
+- [Codeberg](https://codeberg.org/Sevichecc/Seigwai)
+- [Github](https://github.com/Sevichecc/Seigwai)
+
 ## Features
 
 - Markdown
