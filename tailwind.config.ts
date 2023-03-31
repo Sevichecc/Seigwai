@@ -1,5 +1,7 @@
 import type { Config } from 'tailwindcss'
 import { getIconCollections, iconsPlugin } from '@egoist/tailwindcss-icons'
+import typography from '@tailwindcss/typography'
+import daisyui from 'daisyui'
 
 export default {
   content: ['**/*.tsx', '**/*.ts', '**/*.vue', '**/*.html'],
@@ -8,8 +10,8 @@ export default {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/typography'),
-    require('daisyui'),
+    typography,
+    daisyui,
     iconsPlugin({
       collections: getIconCollections(['tabler']),
     }),
