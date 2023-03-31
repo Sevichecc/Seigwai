@@ -71,15 +71,16 @@ export default {
 <template>
   <div class="items">
     <template v-if="items.length">
-      <button
+      <div
         v-for="(item, index) in items"
         :key="index"
         class="item"
         :class="{ 'is-selected': index === selectedIndex }"
         @click="selectItem(index)"
       >
+        <span :class="item.icon" />
         {{ item.title }}
-      </button>
+      </div>
     </template>
     <div v-else class="item">
       No result

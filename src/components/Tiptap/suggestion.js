@@ -10,6 +10,7 @@ export default {
     return [
       {
         title: 'H1',
+        icon: 'i-tabler-h-1',
         command: ({ editor, range }) => {
           editor
             .chain()
@@ -21,6 +22,7 @@ export default {
       },
       {
         title: 'H2',
+        icon: 'i-tabler-h-2',
         command: ({ editor, range }) => {
           editor
             .chain()
@@ -32,6 +34,7 @@ export default {
       },
       {
         title: 'H3',
+        icon: 'i-tabler-h-3',
         command: ({ editor, range }) => {
           editor
             .chain()
@@ -43,30 +46,35 @@ export default {
       },
       {
         title: 'Code block',
+        icon: 'i-tabler-terminal',
         command: ({ editor, range }) => {
           editor.chain().focus().deleteRange(range).setCodeBlock().run()
         },
       },
       {
         title: 'Blockquote',
+        icon: 'i-tabler-blockquote',
         command: ({ editor, range }) => {
           editor.chain().focus().deleteRange(range).toggleBlockquote().run()
         },
       },
       {
         title: 'Divider',
+        icon: 'i-tabler-separator',
         command: ({ editor, range }) => {
           editor.chain().focus().deleteRange(range).setHorizontalRule().run()
         },
       },
       {
         title: 'Bullet List',
+        icon: 'i-tabler-list',
         command: ({ editor, range }) => {
           editor.chain().focus().deleteRange(range).toggleBulletList().run()
         },
       },
       {
         title: 'Ordered List',
+        icon: 'i-tabler-list-numbers',
         command: ({ editor, range }) => {
           editor.chain().focus().deleteRange(range).toggleOrderedList().run()
         },

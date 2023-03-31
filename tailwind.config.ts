@@ -4,11 +4,8 @@ import typography from '@tailwindcss/typography'
 import daisyui from 'daisyui'
 
 export default {
-  content: ['**/*.tsx', '**/*.ts', '**/*.vue', '**/*.html'],
+  content: ['**/*.{js,ts,jsx,tsx}', '**/*.vue', '**/*.html'],
   darkMode: 'class',
-  theme: {
-    extend: {},
-  },
   plugins: [
     typography,
     daisyui,
