@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import Components from 'unplugin-vue-components/vite'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import tailwindConfig from './tailwind.config'
@@ -11,5 +12,10 @@ export default defineConfig({
       plugins: [tailwindcss(tailwindConfig), autoprefixer()],
     },
   },
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    Components({
+      dts: true,
+    }),
+  ],
 })

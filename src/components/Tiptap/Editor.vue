@@ -21,7 +21,6 @@ import go from 'highlight.js/lib/languages/go'
 import rust from 'highlight.js/lib/languages/rust'
 
 import suggestion from './suggestion'
-import BubbleMenu from './BubbleMenu.vue'
 import Commands from './commands'
 
 lowlight.registerLanguage('html', html)
