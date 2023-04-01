@@ -9,8 +9,8 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    BubbleMenu: typeof import('./src/components/Tiptap/BubbleMenu.vue')['default']
-    CommandsList: typeof import('./src/components/Tiptap/CommandsList.vue')['default']
-    Editor: typeof import('./src/components/Tiptap/Editor.vue')['default']
+    BubbleMenu: typeof import('./src/components/tiptap/BubbleMenu.vue')['default']
+    CommandsList: typeof import('./src/components/tiptap/CommandsList.vue')['default']
+    Editor: typeof import('./src/components/tiptap/Editor.vue')['default']
   }
 }

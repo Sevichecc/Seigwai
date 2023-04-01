@@ -3,7 +3,7 @@
 import { VueRenderer } from '@tiptap/vue-3'
 import tippy from 'tippy.js'
 
-import CommandsList from './CommandsList.vue'
+import CommandsList from '../../components/tiptap/CommandsList.vue'
 
 export default {
   items: ({ query }) => {

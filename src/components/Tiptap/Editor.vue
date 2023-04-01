@@ -20,8 +20,8 @@ import scss from 'highlight.js/lib/languages/scss'
 import go from 'highlight.js/lib/languages/go'
 import rust from 'highlight.js/lib/languages/rust'
 
-import suggestion from './suggestion'
-import Commands from './commands'
+import Commands from '../../ composables/tiptap/commands'
+import suggestion from '../../ composables/tiptap/suggestion'
 
 lowlight.registerLanguage('html', html)
 lowlight.registerLanguage('css', css)
