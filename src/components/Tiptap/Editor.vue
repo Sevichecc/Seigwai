@@ -74,8 +74,6 @@ const editor = useEditor({
       },
     }),
     Placeholder.configure({
-      // Use different placeholders depending on the node type:
-      // placeholder: 'Write something …'
       placeholder: ({ node }) => {
         if (node.type.name === 'heading') {
           switch (node.attrs.level) {
@@ -107,13 +105,6 @@ const editor = useEditor({
 </template>
 
 <style lang="scss">
-/* Basic editor styles */
-.ProseMirror {
-  > * + * {
-    margin-top: 0.75em;
-  }
-}
-
 /* Placeholder (at the top) */
 .ProseMirror p.is-editor-empty:first-child::before {
   content: attr(data-placeholder);
