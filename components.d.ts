@@ -12,5 +12,6 @@ declare module '@vue/runtime-core' {
     BubbleMenu: typeof import('./src/components/tiptap/BubbleMenu.vue')['default']
     CommandsList: typeof import('./src/components/tiptap/CommandsList.vue')['default']
     Editor: typeof import('./src/components/tiptap/Editor.vue')['default']
+    PublishWidget: typeof import('./src/components/publish/PublishWidget.vue')['default']
   }
 }

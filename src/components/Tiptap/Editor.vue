@@ -93,15 +93,20 @@ const editor = useEditor({
   autofocus: true,
   editorProps: {
     attributes: {
-      class: 'prose prose-slate mx-auto',
+      class: 'prose prose-slate p-5 focus:outline-none bg-white rounded-box max-w-3xl',
     },
   },
 })
 </script>
 
 <template>
-  <BubbleMenu v-if="editor" :editor="editor" />
-  <EditorContent :editor="editor" />
+  <div
+    class="shadow-lg flex flex-col items-center bg-slate-100 max-w-3xl mx-auto p-4 rounded-box"
+  >
+    <BubbleMenu v-if="editor" :editor="editor" />
+    <EditorContent :editor="editor" />
+    <PublishWidget />
+  </div>
 </template>
 
 <style lang="scss">
@@ -115,7 +120,7 @@ const editor = useEditor({
 }
 
 /* Placeholder (on every new line) */
-.ProseMirror :where(p.is-empty,h1.is-empty,h2.is-empty,h3.is-empty)::before {
+.ProseMirror :where(p.is-empty, h1.is-empty, h2.is-empty, h3.is-empty)::before {
   content: attr(data-placeholder);
   float: left;
   color: #adb5bd;
