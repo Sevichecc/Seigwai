@@ -9,7 +9,7 @@ export default {
   items: ({ query }) => {
     return [
       {
-        title: 'H1',
+        title: 'Heading 1',
         icon: 'i-tabler-h-1',
         command: ({ editor, range }) => {
           editor
@@ -21,7 +21,7 @@ export default {
         },
       },
       {
-        title: 'H2',
+        title: 'Heading 2',
         icon: 'i-tabler-h-2',
         command: ({ editor, range }) => {
           editor
@@ -33,7 +33,7 @@ export default {
         },
       },
       {
-        title: 'H3',
+        title: 'Heading 3',
         icon: 'i-tabler-h-3',
         command: ({ editor, range }) => {
           editor

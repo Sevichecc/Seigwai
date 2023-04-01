@@ -13,4 +13,7 @@ export default {
       collections: getIconCollections(['tabler']),
     }),
   ],
+  daisyui: {
+    themes: false,
+  },
 } satisfies Config

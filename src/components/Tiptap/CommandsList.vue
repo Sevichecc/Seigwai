@@ -69,52 +69,15 @@ export default {
 </script>
 
 <template>
-  <div class="items">
-    <template v-if="items.length">
-      <div
-        v-for="(item, index) in items"
-        :key="index"
-        class="item"
-        :class="{ 'is-selected': index === selectedIndex }"
-        @click="selectItem(index)"
-      >
-        <span :class="item.icon" />
-        {{ item.title }}
-      </div>
-    </template>
-    <div v-else class="item">
-      No result
-    </div>
+  <div v-if="items.length" class="menu menu-compact bg-white w-44 p-1 rounded-lg shadow-lg  border-slate-200 border ">
+    <li
+      v-for="(item, index) in items"
+      :key="index"
+      class="rounded-lg"
+      :class="{ 'active bg-slate-200': index === selectedIndex }"
+      @click="selectItem(index)"
+    >
+      <a class="hover:bg-slate-200 text-slate-900 active:bg-slate-300"><span :class="item.icon" class="h-4 w-4" />{{ item.title }}</a>
+    </li>
   </div>
 </template>
-
-<style lang="scss">
-.items {
-  padding: 0.2rem;
-  position: relative;
-  border-radius: 0.5rem;
-  background: #FFF;
-  color: rgba(0, 0, 0, 0.8);
-  overflow: hidden;
-  font-size: 0.9rem;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.05),
-    0px 10px 20px rgba(0, 0, 0, 0.1),
-  ;
-}
-
-.item {
-  display: block;
-  margin: 0;
-  width: 100%;
-  text-align: left;
-  background: transparent;
-  border-radius: 0.4rem;
-  border: 1px solid transparent;
-  padding: 0.2rem 0.4rem;
-
-  &.is-selected {
-    border-color: #000;
-  }
-}
-</style>
