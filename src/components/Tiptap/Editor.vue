@@ -22,6 +22,7 @@ import rust from 'highlight.js/lib/languages/rust'
 
 import suggestion from './suggestion'
 import Commands from './commands'
+import DraggableItem from './DraggableItem'
 
 lowlight.registerLanguage('html', html)
 lowlight.registerLanguage('css', css)
@@ -36,26 +37,24 @@ lowlight.registerLanguage('go', go)
 lowlight.registerLanguage('rs', rust)
 
 const editor = useEditor({
-  content: `<p>
-          That’s a boring paragraph followed by a fenced code block:
-        </p>
-        <pre><code>for (var i=1; i <= 20; i++)
-{
-  if (i % 15 == 0)
-    console.log("FizzBuzz");
-  else if (i % 3 == 0)
-    console.log("Fizz");
-  else if (i % 5 == 0)
-    console.log("Buzz");
-  else
-    console.log(i);
-}</code></pre>
-        <p>
-          Press Command/Ctrl + Enter to leave the fenced code block and continue typing in boring paragraphs.
-        </p>`,
+  content: `<p>This is a boring paragraph.</p>
+        <div data-type="draggable-item">
+          <p>Followed by a fancy draggable item.</p>
+        </div>
+        <div data-type="draggable-item">
+          <p>And another draggable item.</p>
+          <div data-type="draggable-item">
+            <p>And a nested one.</p>
+            <div data-type="draggable-item">
+              <p>But can we go deeper?</p>
+            </div>
+          </div>
+        </div>
+        <p>Let’s finish with a boring paragraph.</p>`,
   extensions: [
     StarterKit,
     Typography,
+    DraggableItem,
     Link.configure({
       openOnClick: false,
     }),

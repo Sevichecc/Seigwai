@@ -11,6 +11,8 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     BubbleMenu: typeof import('./src/components/Tiptap/BubbleMenu.vue')['default']
     CommandsList: typeof import('./src/components/Tiptap/CommandsList.vue')['default']
+    DragableHandle: typeof import('./src/components/Tiptap/DragableHandle.vue')['default']
+    DragableNode: typeof import('./src/components/Tiptap/DragableNode.vue')['default']
     Editor: typeof import('./src/components/Tiptap/Editor.vue')['default']
   }
 }
