@@ -20,8 +20,8 @@ import scss from 'highlight.js/lib/languages/scss'
 import go from 'highlight.js/lib/languages/go'
 import rust from 'highlight.js/lib/languages/rust'
 
-import Commands from '../../ composables/tiptap/commands'
-import suggestion from '../../ composables/tiptap/suggestion'
+import Commands from '../../composables/tiptap/commands'
+import suggestion from '../../composables/tiptap/suggestion'
 
 lowlight.registerLanguage('html', html)
 lowlight.registerLanguage('css', css)
@@ -103,9 +103,9 @@ const editor = useEditor({
   <div
     class="shadow-lg flex flex-col items-center bg-slate-100 max-w-3xl mx-auto p-4 rounded-box"
   >
-    <BubbleMenu v-if="editor" :editor="editor" />
+    <TiptapBubbleMenu v-if="editor" :editor="editor" />
     <EditorContent :editor="editor" />
-    <PublishWidget />
+    <PublishPublishWidget />
   </div>
 </template>
 
